@@ -1,0 +1,256 @@
+@font-face {
+	font-family: 'national-reg';
+	src: url("../fonts/National2Web-Regular.woff")format("woff");
+}
+
+@font-face {
+	font-family: 'national-bold';
+	src: url("../fonts/National2Web-Bold.woff")format("woff");
+}
+
+body {
+	font-family: 'national-reg', serif;
+}
+
+h1, h2, h3, h4, p.title {
+	font-family: 'national-bold', serif;
+}
+
+.section {
+	padding: 2rem 2rem;
+}
+
+.banner {
+	background-color: #366f00;
+	padding: 1em 0 1em 0;
+}
+
+.banner .title {
+	color: #f9f9f2;
+}
+
+.github-text {
+	color: #366f00;
+}
+
+.proximity-container {
+	position: relative;
+}
+
+.background-rings-container, .icon-rings-container {
+	position: absolute;
+	width: 80vmin;
+	height: 80vmin;
+}
+
+.background-rings, .icon-rings {
+	position: relative;
+}
+
+.background-circle {
+	position: absolute;
+	border-radius: 50%;
+}
+
+.proximity-group {
+	position: absolute;
+	z-index: 1;
+}
+
+.circle-large {
+	width: 80vmin;
+	height: 80vmin;
+	z-index: -3;
+	top: 0;
+	left: 0;
+	border: 3px;
+	border-color: #C4E0F9;
+	background-color: #e4eef7;
+}
+
+.circle-medium {
+	width: 55vmin;
+	height: 55vmin;
+	z-index: -2;
+	top: 12.5vmin;
+	left: 12.5vmin;
+	border: 3px;
+	border-color: #9BBDF9;
+	background-color: #d5e0f5;
+}
+
+.circle-small {
+	width: 30vmin;
+	height: 30vmin;
+	z-index: -1;
+	top: 25vmin;
+	left: 25vmin;
+	border: 3px;
+	border-color: #67AAF9;
+	background-color: #b8d4f5;
+}
+
+.icon-ring-large {
+	width: 70vmin;
+	height: 70vmin;
+	top: 6vmin;
+	left: 6vmin;
+}
+
+.icon-ring-medium {
+	width: 40vmin;
+	height: 40vmin;
+	top: 20vmin;
+	left: 20vmin;
+}
+
+.icon-ring-small {
+	width: 0vmin;
+	height: 0vmin;
+	top: 32.5vmin;
+	left: 32.5vmin;
+}
+
+/*  from https://codepen.io/team/keyframers/pen/LYWyrqO */
+/* to make this work either need to make --radius conditional on prox id
+or split this out so each circle gets its own --radius */
+.circle {
+	display: grid;
+	grid-template-areas: "layer";
+	place-items: center;
+	border-radius: 50%;
+}
+
+#prox-list-1 {
+	--radius: 0vmin;
+	width: calc(2 * var(--radius));
+	height: calc(2 * var(--radius));
+	z-index: 3;
+}
+
+#prox-list-2 {
+	--radius: 20.5vmin;
+	width: calc(2 * var(--radius));
+	height: calc(2 * var(--radius));
+	z-index: 2;
+}
+
+#prox-list-3 {
+	--radius: 34vmin;
+	width: calc(2 * var(--radius));
+	height: calc(2 * var(--radius));
+	z-index: 1;
+}
+
+.icon {
+	grid-area: layer;
+	width: 15vmin;
+	height: 15vmin;
+	border-radius: 50%;
+
+	display: grid;
+	place-items: center;
+
+	color: black;
+	font-weight: bold;
+	font-size: 3vmin;
+
+	--d: calc(var(--i) / var(--total));
+	--r-offset: -0.25turn;
+	--r-amount: 1turn;
+	--r: calc((var(--r-amount) * var(--d)) + var(--r-offset));
+	--transform: rotate(var(--r))
+		translate(var(--radius))
+		rotate(calc(-1 * var(--r)));
+
+	transform: var(--transform);
+	transition: transform 1.5s ease-in-out;
+/*
+	.circletest:hover & {;
+		--radius: calc(-20vmin);
+		--r-offset: -1.75turn;
+	}
+*/
+}
+
+.platform-icon img {
+	max-width: 50%;
+	cursor: pointer;
+	transition: transform .3s;
+}
+
+
+.platform-icon:hover {
+	filter: brightness(1.1) drop-shadow(0 0 0.75rem #ffb5c4);
+}
+
+.icon-lowlight {
+	filter: grayscale(70%);
+	opacity: 70%;
+	transform: scale(0.8);
+}
+
+.icon-highlight {
+	filter: brightness(1.2) drop-shadow(0 0 0.75rem #ffb5c4);
+	transform: scale(1.2);
+}
+
+.longname, .creditline {
+	font-style: italic;
+}
+
+.media-left {
+	width: 20%;
+}
+
+.media-right {
+	max-width: 30%;
+}
+
+.media-right div {
+	text-align: right;
+}
+
+#close-panel {
+	position: absolute;
+	top: 0.3em;
+	right: 0.3em;
+	overflow: hidden;
+}
+
+.details-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.details-logo img {
+	max-width: 140px;
+	max-height: 140px;
+}
+
+.content h3 {
+	font-size: 1.2em;
+}
+
+.info-right {
+	padding-top: 1.5em;
+}
+
+.balance-bar .legend {
+	border: none;
+}
+
+.legend li {
+	display: inline-block;
+}
+
+.platform-status {
+	padding-top: .5em;
+}
+
+.status-label {
+	color: #575757;
+	font-size: 0.9em;
+	margin-top: 0.2em;
+}

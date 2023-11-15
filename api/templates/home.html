@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="columns">
+    <div class="column">
+      <div id="proximity" class="proximity-container">
+        <div class="background-rings-container">
+          <div class="background-rings">
+            <div class="background-circle circle-large"></div>
+            <div class="background-circle circle-medium"></div>
+            <div class="background-circle circle-small"></div>
+          </div>
+        </div>
+        <div class="icon-rings-container">
+          <div class="icon-rings">
+            <div class="proximity-group icon-ring-small" id="prox-list-1"></div>
+            <div class="proximity-group icon-ring-medium" id="prox-list-2"></div>
+            <div class="proximity-group icon-ring-large" id="prox-list-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="content info-panel" id="info-block">
+      </div>
+    </div>
+  </div>
+{% endblock %}

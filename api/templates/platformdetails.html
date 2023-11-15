@@ -1,0 +1,142 @@
+<article class="media block" id="{{platform.slug}}-heading">
+	<div class="media-left">
+		<div class="details-logo">
+			<img src="{{ url_for('static', filename='images/' + platform.slug + '.png')}}">
+		</div>
+		<div class="platform-status">
+			{% if platform.status == "active" %}
+			<span class="tag is-primary">
+				ACTIVE <ion-icon name="checkmark"></ion-icon>
+			</span>
+			{% elif platform.status == "inactive" %}
+			<span class="tag is-warning">
+				INACTIVE <ion-icon name="pause-circle-outline"></ion-icon>
+			</span>
+			{% elif platform.status == "coming" %}
+			<span class="tag is-info">
+				COMING SOON <ion-icon name="time-outline"></ion-icon>
+			</span>
+			{% endif %}
+			<p class="status-label">{{platform.statusMessage}}</p>
+			<button class="delete" id="close-panel"></button>
+		</div>
+	</div>
+	<div class="media-content content">
+		<h2>{{platform.name}}{% if platform.url %} <a href="{{platform.url}}" target="_blank"><ion-icon name="open-outline"></ion-icon></a>{% endif %}</h2>
+		{% if platform.longname %}
+		<p class="longname">{{platform.longname}}</p>
+		{% endif %}
+		<p class="platform-summary">{{platform.summary}}</p>
+		<ul class="platform-benefits">
+		{% if platform.benefits is iterable and platform.benefits is not mapping and platform.benefits is not string %}
+			{% for benefit in platform.benefits %}
+				<li>{{benefit}}</li>
+			{% endfor %}
+		{% else %}
+			{% if platform.benefits %}
+			<li>{{platform.benefits}}</li>
+			{% endif %}
+		{% endif %}
+		</ul>
+	</div>
+	<div class="media-right">
+		<div class="info-right">
+			<div class="tag-key">
+				<span class="tag is-info">directly targeted</span>
+				<span class="tag is-info is-light">indirectly targeted</span>
+				<span class="tag is-warning">not targeted</span>
+			</div>
+			<h3 class="tag-header">Audiences</h3>
+			{% if platform.directAudiences is iterable and platform.directAudiences is not mapping and platform.directAudiences is not string %}
+				{% for audience in platform.directAudiences %}
+					<span class="tag is-info">{{audience}}</span>
+				{% endfor %}
+			{% else %}
+				{% if platform.directAudiences %}
+					<span class="tag is-info">{{platform.directAudiences}}</span>
+				{% endif %}
+			{% endif %}
+			{% if platform.indirectAudiences is iterable and platform.indirectAudiences is not mapping and platform.indirectAudiences is not string %}
+				{% for audience in platform.indirectAudiences %}
+					<span class="tag is-info is-light">{{audience}}</span>
+				{% endfor %}
+			{% else %}
+				{% if platform.indirectAudiences %}
+					<span class="tag is-info is-light">{{platform.indirectAudiences}}</span>
+				{% endif %}
+			{% endif %}
+			{% if not platform.directAudiences and not platform.indirectAudiences %}
+				<span class="tag is-warning">none</span>
+			{% endif %}
+			<h3 class="tag-header">Conversations</h3>
+			{% if platform.directConversations is iterable and platform.directConversations is not mapping and platform.directConversations is not string %}
+				{% for conversation in platform.directConversations %}
+					<span class="tag is-info">{{conversation}}</span>
+				{% endfor %}
+			{% else %}
+				{% if platform.directConversations %}
+					<span class="tag is-info">{{platform.directConversations}}</span>
+				{% endif %}
+			{% endif %}
+			{% if platform.indirectConversations is iterable and platform.indirectConversations is not mapping and platform.indirectConversations is not string %}
+				{% for conversation in platform.indirectConversations %}
+			<span class="tag is-info is-light">{{conversation}}</span>
+				{% endfor %}
+			{% else %}
+				{% if platform.indirectConversations %}
+					<span class="tag is-info">{{platform.indirectConversations}}</span>
+				{% endif %}
+			{% endif %}
+			{% if not platform.directConversations and not platform.indirectConversations %}
+				<span class="tag is-warning">none</span>
+			{% endif %}
+		</div>
+	</div>
+</article>
+<article class="media block">
+	<div class="media-content content">
+		<div class="columns">
+			<div class="column is-half">
+				<h3>What we share</h3>
+				<div class="balance-bar">
+					<table class="charts-css bar multiple stacked">
+						<tr>
+							<td style="--size: calc({{platform.images}}/100);"> </td>
+							<td style="--size: calc({{platform.data}}/100);"> </td>
+							<td style="--size: calc({{platform.knowledge}}/100);"> </td>
+						</tr>
+					</table>
+					<ul class="charts-css legend legend-square">
+						<li>Images</li>
+						<li>Data</li>
+						<li>Knowledge</li>
+					</ul>
+				</div>
+			</div>
+			<div class="column">
+				<h3>Reach</h3>
+				{% if platform.reach is iterable and platform.reach is not mapping and platform.reach is not string %}
+					{% for reach in platform.reach %}
+						<p>{{reach}}</p>
+					{% endfor %}
+				{% else %}
+					{% if platform.reach %}
+						<p>{{platform.reach}}</p>
+					{% endif %}
+				{% endif %}
+			</div>
+			<div class="column">
+				<h3>Impact</h3>
+				{% if platform.impact is iterable and platform.impact is not mapping and platform.impact is not string %}
+					{% for impact in platform.impact %}
+						<p>{{impact}}</p>
+					{% endfor %}
+				{% else %}
+					{% if platform.impact %}
+						<p>{{platform.impact}}</p>
+					{% endif %}
+				{% endif %}
+			</div>
+		</div>
+	</div>
+</article>

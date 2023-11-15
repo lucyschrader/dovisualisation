@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Platforms</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/charts.css/dist/charts.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/platformscore.css') }}">
+
+    <!-- Javascript -->
+    <script src="{{ url_for('static', filename='js/platformscore.js') }}" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/svg.js/3.2.0/svg.min.js" integrity="sha512-EmfT33UCuNEdtd9zuhgQClh7gidfPpkp93WO8GEfAP3cLD++UM1AG9jsTUitCI9DH5nF72XaFePME92r767dHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/beaker.ico') }}">
+  </head>
+  <body>
+    <section class="banner" id="banner">
+      <div class="container">
+        <nav class="level">
+          <div class="level-left">
+            <div class="level-item">
+              <p class="title">Digital outreach at Te Papa</p>
+            </div>
+            <div class="level-item">
+              <span class="tag is-light is-large">Draft!</span>
+            </div>
+          </div>
+          <div class="level-right">
+            <div class="level-item">
+              <a class="button is-success is-inverted" href="https://github.com/lucyschrader/dovisualisation">
+                <span class="icon">
+                  <ion-icon name="logo-github"></ion-icon>
+                </span>
+                <span class="github-text">See this on github</span>
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </section>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
