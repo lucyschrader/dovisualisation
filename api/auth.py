@@ -20,7 +20,7 @@ def auth_required(view):
 def authenticate():
 	session.clear()
 	if request.method == "POST":
-		correct_password = os.environ.get("DOVIS-AUTH")
+		correct_password = os.environ.get("DOVIS_AUTH")
 		submitted_password = request.form["password"]
 		if submitted_password == correct_password:
 			session["authenticated"] = True
